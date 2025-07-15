@@ -1,5 +1,6 @@
 package com.InventoryManagement.inventory;
 
+import com.InventoryManagement.inventory.Dto.GetSellerResponse;
 import com.InventoryManagement.inventory.Dto.RegisterSellerRequestDto;
 import com.InventoryManagement.inventory.Dto.RegisterSellerResponseDto;
 import com.InventoryManagement.inventory.Dto.ResponseDto;
@@ -9,9 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Objects;
 
@@ -36,5 +35,13 @@ public class SellerController {
         RegisterSellerResponseDto res = sellerService.registerNewSeller(request);
         ResponseDto<RegisterSellerResponseDto> responseDto = new ResponseDto<>(res.getMessage(), res, null, true);
         return ResponseEntity.ok(responseDto);
+    }
+
+    @GetMapping(value = "/v1/get-seller-details", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<GetSellerResponse> getSellerDetails(@RequestParam String sellerName) {
+        GetSellerResponse res = sellerService.getSellerDetails(sellerName);
+        if (Objects.isNull(res)) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(res);
+
     }
 }

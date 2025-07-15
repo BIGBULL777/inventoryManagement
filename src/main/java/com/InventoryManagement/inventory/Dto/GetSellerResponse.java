@@ -9,9 +9,9 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterSellerRequestDto {
-    public String sellerMobileNumber;
-    public List<String> serviceablePincodes;
-    public List<String> acceptedPaymentModes;
+public class GetSellerResponse {
     public String sellerName;
+    public String sellerMobileNumber;
+    public List<String> servicablePincodes;
+    public List<String> paymentModesAccepted;
 }

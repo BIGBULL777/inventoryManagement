@@ -21,6 +21,9 @@ public class Seller {
     @Column(name = "payment_modes", nullable = false)
     private String paymentModesJson;
 
+    @Column(name =  "seller_name", nullable = false ,unique = true)
+    private String sellerName;
+
 
     @Override
     public String toString() {

@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SellerDao extends CrudRepository<Seller, String> {
+    Seller findBySellerName(String sellerName);
 }
