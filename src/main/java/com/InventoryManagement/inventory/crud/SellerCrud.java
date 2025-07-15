@@ -25,4 +25,7 @@ public class SellerCrud {
         return seller.getSellerId();
     }
 
+    public Seller findBySellerName(String sellerName) {
+         return sellerDao.findBySellerName(sellerName);
+    }
 }
