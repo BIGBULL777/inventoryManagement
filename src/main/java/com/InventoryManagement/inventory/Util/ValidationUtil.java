@@ -14,6 +14,7 @@ public class ValidationUtil {
         if (request.acceptedPaymentModes == null || request.acceptedPaymentModes.isEmpty()) {
             return "Please Enter payment modes";
         }
+        if (!validateMobileNumber(request.getSellerMobileNumber())) return "Invalid Seller Mobile Number";
 
         return null;
 
